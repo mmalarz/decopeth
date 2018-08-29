@@ -17,4 +17,16 @@ contract Decopeth {
 
     mapping (address => Business) public bussinesses;
     Review[] public reviews;
+
+    modifier validateReview(string _reviewerName, string _review, uint _stars) {
+        require(bytes(_reviewerName).length > 0);
+        require(bytes(_review).length > 0);
+        require(_stars >= 0 && _stars <= 5);
+        _;
+    }
+    
+    modifier validateBusiness(string _name) {
+        require(bytes(_name).length > 0);
+        _;
+    }
 }
