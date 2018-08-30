@@ -15,7 +15,7 @@ contract Decopeth {
         uint date;
     }
 
-    mapping (address => Business) public bussinesses;
+    mapping (address => Business) public businesses;
     Review[] public reviews;
 
     modifier validateReview(string _reviewerName, string _review, uint _stars) {
