@@ -29,4 +29,26 @@ contract Decopeth {
         require(bytes(_name).length > 0);
         _;
     }
+
+    function addBusiness(string _name) public validateBusiness(_name) {
+        businesses[msg.sender] =  Business(_name, 0);
+    }
+
+    function addReview(
+        address _businessAddress,
+        string _reviewerName,
+        string _review,
+        uint _stars
+    ) public validateReview(_reviewerName, _review, _stars) {
+        reviews.push(
+            Review(
+                _businessAddress,
+                msg.sender,
+                _reviewerName,
+                _review,
+                _stars,
+                now
+            )
+        );
+    }
 }
